@@ -1,0 +1,1 @@
+alias config='/usr/bin/git --git-dir=/home/lucca/.cfg/ --work-tree=/home/lucca'
