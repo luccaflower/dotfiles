@@ -1,1 +1,4 @@
 alias config='/usr/bin/git --git-dir=/home/lucca/.cfg/ --work-tree=/home/lucca'
+alias ls='exa --icons'
+alias lsl='ls -l'
+alias lsa='lsl -a'
