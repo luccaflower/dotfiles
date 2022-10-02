@@ -7,6 +7,11 @@ set fish_function_path $fish_function_path "/usr/share/powerline/bindings/fish"
 source /usr/share/powerline/bindings/fish/powerline-setup.fish
 powerline-setup
 
+if status --is-interactive
+    set BASE16_SHELL "$HOME/.config/base16-shell/"
+    source "$BASE16_SHELL/profile_helper.fish"
+end
+
 fish_add_path /home/lucca/.cargo/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/snap/bin:/home/lucca/.fzf/bin
 alias ls "exa --icons" 
 alias lsa "ls -a"
