@@ -1,0 +1,80 @@
+:set relativenumber
+:set number
+set clipboard=unnamedplus,unnamed,ideaput   " integrate with system clipboard
+set ignorecase                              " ignore case in search patterns
+
+" set <leader> to <space>
+let mapleader = " "
+
+" edit ideavim config
+nnoremap <leader>i :e ~/.ideavimrc<CR>
+nnoremap <leader>vr :source ~/.ideavimrc<CR>
+
+" make Y behave like D and C, yanking till end of line
+map Y y$
+
+" don't lose selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
+" create new class
+nnoremap <leader>nc :action NewClass<CR>
+
+" clear search highlighting
+nnoremap <leader>ö :nohls<return><esc>
+
+nnoremap <Leader>ga :action GotoAction<CR>
+nnoremap <Leader>gc :action GotoClass<CR>
+nnoremap <Leader>gd :action GotoDeclaration<CR>
+nnoremap <Leader>gf :action GotoFile<CR>
+nnoremap <Leader>gi :action GotoImplementation<CR>
+nnoremap <Leader>gs :action GotoSuperMethod<CR>
+nnoremap <Leader>gt :action GotoTest<CR>
+
+nnoremap <Leader>fp :action ShowFilePath<CR>
+
+nnoremap <Leader>ic :action InspectCode<CR>
+
+nnoremap <Leader>mv :action ActivateMavenProjectsToolWindow<CR>
+
+nnoremap <Leader>oi :action OptimizeImports<CR>
+
+nnoremap <Leader>pm :action ShowPopupMenu<CR>
+
+nnoremap <Leader>rc :action RunToCursor<CR>
+nnoremap <Leader>rC :action ChooseRunConfiguration<CR>
+nnoremap <Leader>re :action RenameElement<CR>
+nnoremap <Leader>rf :action RenameFile<CR>
+
+nnoremap <Leader>rr :action Rerun<CR>
+
+nnoremap <Leader>se :action SearchEverywhere<CR>
+nnoremap <Leader>fe :action FindInPath<CR>
+nnoremap <Leader>su :action ShowUsages<CR>
+nnoremap <Leader>tc :action CloseActiveTab<CR>
+nnoremap <Leader>si :action StepInto<CR>
+
+nnoremap <Leader>tb :action ToggleLineBreakpoint<CR>
+
+nnoremap <Leader>tl Vy<CR>:action ActivateTerminalToolWindow<CR>
+vnoremap <Leader>tl y<CR>:action ActivateTerminalToolWindow<CR>
+
+" project search
+nnoremap fu :action FindUsages<CR>
+
+" Tab operation
+nnoremap <Tab><Right> gt
+nnoremap <Tab><Left> gT
+
+" built in search looks better
+nnoremap / :action Find<CR>
+
+nnoremap <Leader>ää :action CommentByLineComment<CR>
+
+nnoremap <Leader>bb :action ToggleLineBreakpoint<CR>
+nnoremap <Leader>br :action ViewBreakpoints<CR>
+
+nnoremap <Leader>cv :action ChangeView<CR>
+
+nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
