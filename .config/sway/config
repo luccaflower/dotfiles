@@ -20,7 +20,7 @@ set $term alacritty
 # on the original workspace that the command was run on.
 set $menu yofi | dmenu | xargs swaymsg exec --
 
-set $lock swaylock -i $HOME/Pictures/wallpaper.png
+set $lock swaylock -i $HOME/Pictures/lockscreen.png
 
 ### Output configuration
 #
