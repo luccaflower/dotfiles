@@ -7,7 +7,7 @@ set ignorecase                              " ignore case in search patterns
 let mapleader = " "
 
 " edit ideavim config
-nnoremap <leader>i :e ~/.ideavimrc<CR>
+nnoremap <leader>vv :e ~/.ideavimrc<CR>
 nnoremap <leader>vr :source ~/.ideavimrc<CR>
 
 " make Y behave like D and C, yanking till end of line
@@ -78,3 +78,4 @@ nnoremap <Leader>br :action ViewBreakpoints<CR>
 nnoremap <Leader>cv :action ChangeView<CR>
 
 nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
+nnoremap <Leader>cn :action NewFile<CR>
