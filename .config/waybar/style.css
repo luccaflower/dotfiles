@@ -75,3 +75,7 @@ window#waybar {
     color: #cc241d;
     border-bottom: 4px solid #cc241d;
 }
+#language {
+/*    snip  */
+    min-width: 30px;
+}
