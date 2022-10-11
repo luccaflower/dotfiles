@@ -156,9 +156,9 @@
     },
     "custom/weather": {
         "format": "{}",
-        "exec": "curl -m 1 wttr.in?format=3 2>/dev/null",
+        "exec": "curl -m 1 wttr.in/uppsala?format=3 2>/dev/null",
         "interval": 60,
-        "on-click": "firefox wttr.in"
+        "on-click": "firefox wttr.in/uppsala"
     }
 }
 
