@@ -19,6 +19,7 @@ fi
 QAICASH_SECRET_KEY=***REMOVED***
 QAICASH_SECRET_KEY_LIVE=***REMOVED***
 AW_WAR_DIR=/home/lucca/IdeaProjects/accountweb/target
+EDITOR=/sbin/nvim
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
