@@ -12,9 +12,11 @@ fi
 if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
   source /usr/share/zsh/manjaro-zsh-prompt
 fi
-if [[ -e ~/.zsh/aliases ]]; then
-  source ~/.zsh/aliases ]]
-fi
+
+for f in ~/.zsh/include/*; do
+    echo $f;
+    source $f;
+done
 
 QAICASH_SECRET_KEY=***REMOVED***
 QAICASH_SECRET_KEY_LIVE=***REMOVED***
