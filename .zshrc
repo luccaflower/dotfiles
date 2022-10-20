@@ -14,7 +14,6 @@ if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
 fi
 
 for f in ~/.zsh/include/*; do
-    echo $f;
     source $f;
 done
 
