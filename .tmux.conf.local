@@ -198,7 +198,7 @@ tmux_conf_theme_window_status_format="#I #W"
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_window_status_current_fg="$gruvbox_bg0"
-tmux_conf_theme_window_status_current_bg="$gruvbox_blue_b"
+tmux_conf_theme_window_status_current_bg="$gruvbox_fg4"
 tmux_conf_theme_window_status_current_attr="bold"
 tmux_conf_theme_window_status_current_format="#I #W"
 #tmux_conf_theme_window_status_current_format="#{circled_window_index} #W"
@@ -215,7 +215,7 @@ tmux_conf_theme_window_status_bell_bg="default"
 tmux_conf_theme_window_status_bell_attr="blink,bold"
 
 # window last status style
-tmux_conf_theme_window_status_last_fg="$gruvbox_blue_b"
+tmux_conf_theme_window_status_last_fg="$gruvbox_fg4"
 tmux_conf_theme_window_status_last_bg="$gruvbox_bg1"
 tmux_conf_theme_window_status_last_attr="none"
 
@@ -260,8 +260,8 @@ tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d
 tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} "
 
 # status left style
-tmux_conf_theme_status_left_fg="$gruvbox_bg0,$gruvbox_fg0,$tmux_conf_theme_colour_8"
-tmux_conf_theme_status_left_bg="$gruvbox_yellow,$gruvbox_purple,$gruvbox_blue"
+tmux_conf_theme_status_left_fg="$gruvbox_bg0,$gruvbox_fg0,$gruvbox_bg0"
+tmux_conf_theme_status_left_bg="$gruvbox_fg0,$gruvbox_red,$gruvbox_blue"
 tmux_conf_theme_status_left_attr="bold,none,none"
 
 # status right style
