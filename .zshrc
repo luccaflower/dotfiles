@@ -28,3 +28,4 @@ EDITOR=/sbin/nvim
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export JIRA_API_TOKEN=W3Qu5bCv99vJ9j4
+export PATH="$PATH:/home/lucca/.local/share/coursier/bin"
