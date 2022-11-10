@@ -25,7 +25,8 @@ colors:
     white:   '0xdfbf8e'
 window:
   decorations: None
-
+  opacity: 0.9
+  dynamic_title: true
 font:
   normal: 
     family: DejaVuSansMono Nerd Font Mono
