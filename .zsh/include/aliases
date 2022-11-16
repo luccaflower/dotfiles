@@ -3,3 +3,4 @@ alias ls='exa --icons'
 alias lsl='ls -l'
 alias lsa='lsl -a'
 alias :q='exit'
+alias kdiff="kitty +kitten diff"
