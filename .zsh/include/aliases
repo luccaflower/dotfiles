@@ -4,3 +4,4 @@ alias lsl='ls -l'
 alias lsa='lsl -a'
 alias :q='exit'
 alias kdiff="kitty +kitten diff"
+alias kssh="kitty +kitten ssh"
