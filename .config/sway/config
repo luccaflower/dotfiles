@@ -22,6 +22,9 @@ set $menu yofi | dmenu | xargs swaymsg exec --
 
 set $lock swaylock -i $HOME/Pictures/lockscreen.png
 
+#japanese input
+exec --no-startup-id fcitx5 -d
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -56,7 +59,7 @@ output * bg $HOME/Pictures/xenia-wallpaper.png fill
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 input * {
-    xkb_layout se,se(nodeadkeys)
+    xkb_layout se,se(nodeadkeys),jp
     xkb_options grp:alt_shift_toggle,caps:escape
 }
 
