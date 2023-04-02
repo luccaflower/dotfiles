@@ -26,10 +26,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
   vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
 end
 
-local servers = { "dockerls", "rust_analyzer", "texlab", }
+local servers = { "dockerls", "rust_analyzer", "texlab", "solargraph"}
 
 local cmp = require'cmp'
 
@@ -131,7 +130,6 @@ cmp.setup({
         Class = 4,
         Color = 4,
         Module = 4,
-        Keyword = 2,
         Constructor = 1,
         Interface = 1,
         Snippet = 0,

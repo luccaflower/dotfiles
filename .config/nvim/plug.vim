@@ -37,6 +37,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'ruby-formatter/rufo-vim'
 
 " Syntactic language support
 Plug 'cespare/vim-toml', {'branch': 'main'}

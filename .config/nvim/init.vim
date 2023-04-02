@@ -82,6 +82,9 @@ let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
 
+" ruby
+let g:rufo_auto_formatting = 1
+
 " Completion
 " Better completion
 " menuone: popup even when there's only one match
