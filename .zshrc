@@ -29,3 +29,8 @@ EDITOR=/sbin/nvim
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export JIRA_API_TOKEN=W3Qu5bCv99vJ9j4
 export PATH="$PATH:/home/lucca/.local/share/coursier/bin"
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+source $HOME/.rvm/scripts/rvm
