@@ -26,8 +26,8 @@ EDITOR=/sbin/nvim
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-export JIRA_API_TOKEN=W3Qu5bCv99vJ9j4
+source $HOME/.zsh/theme/powerlevel10k.zsh-theme
+export JIRA_API_TOKEN=***REMOVED***
 export PATH="$PATH:/home/lucca/.local/share/coursier/bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 

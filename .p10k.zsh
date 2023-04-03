@@ -35,6 +35,7 @@
     os_icon                 # os identifier
     dir                     # current directory
     vcs                     # git status
+    docker_context
     # =========================[ Line #2 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol
@@ -1244,6 +1245,35 @@
   POWERLEVEL9K_KUBECONTEXT_DEFAULT_CONTENT_EXPANSION+='${P9K_KUBECONTEXT_CLOUD_CLUSTER:-${P9K_KUBECONTEXT_NAME}}'
   # Append the current context's namespace if it's not "default".
   POWERLEVEL9K_KUBECONTEXT_DEFAULT_CONTENT_EXPANSION+='${${:-/$P9K_KUBECONTEXT_NAMESPACE}:#/default}'
+
+
+  #############[ docker_context: current docker context (https://docs.docker.com/engine/context/working-with-contexts/) ]#############
+  # Show docker context only when the command you are typing invokes one of these (pipe-separated) tools.
+  # Comment the next line to always show docker context.
+  #typeset -g POWERLEVEL9K_DOCKER_CONTEXT_SHOW_ON_COMMAND='docker'
+  # Don't show docker context if it's literally "default".
+  typeset -g POWERLEVEL9K_DOCKER_CONTEXT_SHOW_DEFAULT=0
+
+  ################################################################
+  # Docker context
+  prompt_docker_context() {
+    local ctx=${DOCKER_CONTEXT:-default}
+    if [[ -z ${DOCKER_CONTEXT:-} ]]; then
+      if (( $+commands[jq] )); then
+        local cfg=${DOCKER_CONFIG:-~/.docker/config.json}
+        ctx="$(jq -e -r '.currentContext' $cfg 2>/dev/null)" || ctx=default
+      else;
+        ctx=$(docker context show)
+      fi
+    fi
+    [[ -z $ctx || $ctx == default && $_POWERLEVEL9K_DOCKER_CONTEXT_SHOW_DEFAULT == 0 ]] && return
+    _p9k_prompt_segment "$0" "$_p9k_color1" "deepskyblue1" '\U1F433' 0 '' "$ctx"
+  }
+
+  _p9k_prompt_docker_context_init() {
+    typeset -g "_p9k__segment_cond_${_p9k__prompt_side}[_p9k__segment_index]"='$commands[docker]'
+  }
+
 
   # Custom prefix.
   # typeset -g POWERLEVEL9K_KUBECONTEXT_PREFIX='%fat '
