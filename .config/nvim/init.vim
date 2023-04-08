@@ -1,6 +1,3 @@
-" Fish doesn't play all that well with others
-set shell=/bin/bash
-
 
 so ~/.config/nvim/plug.vim
 so ~/.config/nvim/colors.vim
@@ -8,19 +5,6 @@ so ~/.config/nvim/shortcuts.vim
 
 " LSP configuration
 lua require("lsp")
-
-" Clipboard
-" " Copy to clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
-
-" " Paste from clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
 
 " Plugin settings
 let g:secure_modelines_allowed_items = [
@@ -85,12 +69,6 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 " ruby
 let g:rufo_auto_formatting = 1
 
-" Completion
-" Better completion
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
 " Better display for messages
 set cmdheight=2
 " You will have bad experience for diagnostic messages when it's default 4000.
