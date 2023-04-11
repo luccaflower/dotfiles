@@ -6,6 +6,10 @@ so ~/.config/nvim/shortcuts.vim
 " LSP configuration
 lua require("lsp")
 
+" plugin configs
+lua require("aerial-config")
+lua require("toggleterm-config")
+
 " Plugin settings
 let g:secure_modelines_allowed_items = [
                 \ "textwidth",   "tw",

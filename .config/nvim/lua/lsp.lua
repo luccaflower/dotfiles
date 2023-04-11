@@ -1,4 +1,3 @@
-
 local lspconfig = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -8,7 +7,7 @@ local on_attach = function(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -16,21 +15,32 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
+    opts)
   buf_set_keymap('n', '<space>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<space>e',
+    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',
+    opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
   vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 end
 
-local servers = { "dockerls", "rust_analyzer", "texlab", "solargraph"}
+local servers = {
+  "dockerls",
+  "rust_analyzer",
+  "texlab",
+  "solargraph",
+  "lua_ls",
+  "jdtls",
+  "bashls"
+}
 
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 --completion
 local lspkind_comparator = function(conf)
@@ -60,84 +70,85 @@ local label_comparator = function(entry1, entry2)
 end
 
 local cmp_kinds = {
-    Class = ' ',
-    Color = ' ',
-    Constant = 'ﲀ ',
-    Constructor = ' ',
-    Enum = '練',
-    EnumMember = ' ',
-    Event = ' ',
-    Field = ' ',
-    File = '',
-    Folder = ' ',
-    Function = ' ',
-    Interface = 'ﰮ ',
-    Keyword = ' ',
-    Method = ' ',
-    Module = ' ',
-    Operator = '',
-    Property = ' ',
-    Reference = ' ',
-    Snippet = ' ',
-    Struct = ' ',
-    Text = ' ',
-    TypeParameter = ' ',
-    Unit = '塞',
-    Value = ' ',
-    Variable = ' ',
+  Class = ' ',
+  Color = ' ',
+  Constant = 'ﲀ ',
+  Constructor = ' ',
+  Enum = '練',
+  EnumMember = ' ',
+  Event = ' ',
+  Field = ' ',
+  File = '',
+  Folder = ' ',
+  Function = ' ',
+  Interface = 'ﰮ ',
+  Keyword = ' ',
+  Method = ' ',
+  Module = ' ',
+  Operator = '',
+  Property = ' ',
+  Reference = ' ',
+  Snippet = ' ',
+  Struct = ' ',
+  Text = ' ',
+  TypeParameter = ' ',
+  Unit = '塞',
+  Value = ' ',
+  Variable = ' ',
 }
 
 cmp.setup({
   snippet = {
-    expand = function(args)  
+    expand = function(args)
       require('luasnip').lsp_expand(args.body)
     end
   },
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = string.format('%s %s', cmp_kinds[vim_item.kind], vim_item.kind)
+      vim_item.kind = string.format('%s %s', cmp_kinds[vim_item.kind],
+        vim_item.kind)
       vim_item.menu = ({
         nvim_lsp = '[LSP]',
-          luasnip = '[Snp]',
-          buffer = '[Buf]',
-          nvim_lua = '[Lua]',
-          path = '[Pth]',
-          calc = '[Clc]',
-          emoji = '[Emj]',
+        luasnip = '[Snp]',
+        buffer = '[Buf]',
+        nvim_lua = '[Lua]',
+        path = '[Pth]',
+        calc = '[Clc]',
+        emoji = '[Emj]',
       })[entry.source.name]
 
       return vim_item
     end,
   },
-  sorting = { 
+  sorting = {
     comparators = {
-    lspkind_comparator({
-      kind_priority = {
-        Keyword = 12,
-        Function = 11,
-        Method = 11,
-        Field = 10,
-        Property = 10,
-        Constant = 9,
-        Enum = 9,
-        EnumMember = 9,
-        Event = 9,
-        Operator = 9,
-        Reference = 9,
-        Struct = 9,
-        Variable = 8,
-        File = 7,
-        Folder = 7,
-        Class = 4,
-        Color = 4,
-        Module = 4,
-        Constructor = 1,
-        Interface = 1,
-        Snippet = 0,
-        Text = 1,
-        TypeParameter = 1,
-        Unit = 1,
-        Value = 1,
+      lspkind_comparator({
+        kind_priority = {
+          Keyword = 12,
+          Function = 11,
+          Method = 11,
+          Field = 10,
+          Property = 10,
+          Constant = 9,
+          Enum = 9,
+          EnumMember = 9,
+          Event = 9,
+          Operator = 9,
+          Reference = 9,
+          Struct = 9,
+          Variable = 8,
+          File = 7,
+          Folder = 7,
+          Class = 4,
+          Color = 4,
+          Module = 4,
+          Constructor = 1,
+          Interface = 1,
+          Snippet = 0,
+          Text = 1,
+          TypeParameter = 1,
+          Unit = 1,
+          Value = 1,
         },
       }),
       label_comparator,
@@ -156,7 +167,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'buffer' },
     { name = 'luasnip' },
-  
+
   })
 })
 
@@ -184,36 +195,37 @@ require("mason-lspconfig").setup()
 
 -- Rust-tools
 require('rust-tools').setup({
-    runnables = {
-        use_telescope = false
-    },
-    debuggables = {
-        use_telescope = false
-    },
-    
+  runnables = {
+    use_telescope = false
+  },
+  debuggables = {
+    use_telescope = false
+  },
 })
 
--- Scala 
+-- Scala
 local metals = require("metals")
 local metals_config = metals.bare_config()
 metals_config.settings = {
   showImplicitArguments = true,
-  excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
+  excludedPackages = { "akka.actor.typed.javadsl",
+    "com.github.swagger.akka.javadsl" },
 }
 metals_config.capabilities = capabilities
 metals_config.on_attach = on_attach
 
-local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals",
+  { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-pattern = { "scala", "sbt", "java" },
-callback = function()
-  metals.initialize_or_attach(metals_config)
-end,
-group = nvim_metals_group,
+  pattern = { "scala", "sbt" },
+  callback = function()
+    metals.initialize_or_attach(metals_config)
+  end,
+  group = nvim_metals_group,
 })
 
 -- Rainbow brackets
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   rainbow = {
     enable = true,
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
@@ -226,7 +238,7 @@ require'nvim-treesitter.configs'.setup {
 
 -- Discord Rich Presence
 require('presence'):setup({
-    neovim_image_text = "vim user btw"
+  neovim_image_text = "vim user btw"
 })
 
 -- Indent guides

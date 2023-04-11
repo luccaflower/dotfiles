@@ -13,6 +13,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'jghauser/mkdir.nvim'
 Plug 'townk/vim-autoclose' 
 Plug 'nvim-lua/plenary.nvim'
+Plug 'akinsho/toggleterm.nvim'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
@@ -27,7 +28,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Semantic language support
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'williamboman/mason.nvim'
@@ -39,6 +39,9 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'ruby-formatter/rufo-vim'
 
+" Code outline
+Plug 'stevearc/aerial.nvim'
+
 " Syntactic language support
 Plug 'cespare/vim-toml', {'branch': 'main'}
 Plug 'stephpy/vim-yaml'
@@ -47,8 +50,6 @@ Plug 'rhysd/vim-clang-format'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'scalameta/nvim-metals', {'branch': 'main'}
 
-"Plug 'fatih/vim-go'
-Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
