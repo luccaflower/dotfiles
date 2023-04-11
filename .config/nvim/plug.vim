@@ -18,11 +18,11 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim'
 
 " GUI enhancements
-Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
-Plug 'chriskempson/base16-vim'
+Plug 'RRethy/nvim-base16'
 Plug 'glepnir/indent-guides.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
