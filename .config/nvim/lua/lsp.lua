@@ -1,14 +1,8 @@
 local lspconfig = require('lspconfig')
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
+local lsp_keymaps = function(bufnr)
   local opts = { noremap = true, silent = true }
-
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  --
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -27,7 +21,22 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',
     opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+end
+
+local on_attach = function(bufnr)
+  lsp_keymaps(bufnr)
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+
+local on_attach_with_format = function(client, bufnr)
+  on_attach(bufnr)
   vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+end
+
+local on_attach_no_format = function(client, bufnr)
+  on_attach(bufnr)
 end
 
 local servers = {
@@ -36,7 +45,6 @@ local servers = {
   "texlab",
   "solargraph",
   "lua_ls",
-  "jdtls",
   "bashls"
 }
 
@@ -172,15 +180,21 @@ cmp.setup({
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-for _, lsp in ipairs(servers) do
+local configure_lsp = function(lsp, attach)
   lspconfig[lsp].setup {
     capabilities = capabilities,
-    on_attach = on_attach,
+    on_attach = attach,
     flags = {
       debounce_text_changes = 150,
     }
   }
 end
+
+for _, lsp in ipairs(servers) do
+  configure_lsp(lsp, on_attach_with_format)
+end
+
+configure_lsp("jdtls", on_attach_no_format)
 
 vim.lsp.handlers["textDocuments/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -212,7 +226,7 @@ metals_config.settings = {
     "com.github.swagger.akka.javadsl" },
 }
 metals_config.capabilities = capabilities
-metals_config.on_attach = on_attach
+metals_config.on_attach = on_attach_with_format
 
 local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals",
   { clear = true })

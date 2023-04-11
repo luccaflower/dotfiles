@@ -14,6 +14,8 @@ Plug 'jghauser/mkdir.nvim'
 Plug 'townk/vim-autoclose' 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'akinsho/toggleterm.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
@@ -62,7 +64,6 @@ Plug 'f-person/git-blame.nvim'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'p00f/nvim-ts-rainbow'
 
 " Rich Presence
 Plug 'andweeb/presence.nvim'
