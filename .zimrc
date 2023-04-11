@@ -59,3 +59,7 @@ zmodule https://github.com/agkozak/zsh-z
 
 # p10k
 zmodule romkatv/powerlevel10k --use degit
+
+zmodule zimfw/fzf
+zmodule zimfw/exa
+
