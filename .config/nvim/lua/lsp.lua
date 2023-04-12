@@ -44,7 +44,6 @@ local servers = {
   "rust_analyzer",
   "texlab",
   "solargraph",
-  "lua_ls",
   "bashls"
 }
 
@@ -195,8 +194,34 @@ for _, lsp in ipairs(servers) do
   configure_lsp(lsp, on_attach_with_format, {})
 end
 
+local lua_ls_settings = {
+  Lua = {
+    runtime = {
+      -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+      version = 'LuaJIT',
+      -- Setup your lua path
+      path = vim.split(package.path, ';')
+    },
+    diagnostics = {
+      -- Get the language server to recognize the `vim` global
+      globals = { 'vim' }
+    },
+    workspace = {
+      -- Make the server aware of Neovim runtime files
+      library = {
+        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+      }
+    }
+  }
+}
+
+configure_lsp("lua_ls", on_attach_with_format, lua_ls_settings)
+
 -- Java configuration
 local home = os.getenv('HOME')
+local root_markers = { '.git' }
+local root_dir = require('jdtls.setup').find_root(root_markers)
 local workspace_folder = home ..
     "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 local nvim_config = home .. '/.config/nvim'
