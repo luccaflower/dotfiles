@@ -71,7 +71,7 @@ nnoremap k gk
 nnoremap <leader>i :e $MYVIMRC<cr>
 
 " Close current buffer
-nnoremap <leader>x :bd<cr>
+nnoremap <leader>x :bd <cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"

@@ -32,7 +32,7 @@ end
 
 local on_attach_with_format = function(client, bufnr)
   on_attach(bufnr)
-  vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+  vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 end
 
 local on_attach_no_format = function(client, bufnr)
@@ -180,21 +180,99 @@ cmp.setup({
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local configure_lsp = function(lsp, attach)
+local configure_lsp = function(lsp, attach, settings)
   lspconfig[lsp].setup {
     capabilities = capabilities,
     on_attach = attach,
     flags = {
       debounce_text_changes = 150,
-    }
+    },
+    settings = settings
   }
 end
 
 for _, lsp in ipairs(servers) do
-  configure_lsp(lsp, on_attach_with_format)
+  configure_lsp(lsp, on_attach_with_format, {})
 end
 
-configure_lsp("jdtls", on_attach_no_format)
+-- Java configuration
+local home = os.getenv('HOME')
+local workspace_folder = home ..
+    "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
+local nvim_config = home .. '/.config/nvim'
+local jdtls = require('jdtls')
+local jdtls_cmd = {
+  'java',
+  '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+  '-Dosgi.bundles.defaultStartLevel=4',
+  '-Declipse.product=org.eclipse.jdt.ls.core.product',
+  '-Dlog.protocol=true',
+  '-Dlog.level=ALL',
+  '-Xmx1g',
+  '--add-modules=ALL-SYSTEM',
+  '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+  '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+  '-jar',
+  vim.fn.glob(
+    home ..
+    '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
+  '-configuration',
+  home .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
+  '-data', workspace_folder
+}
+local completions = {
+  favoriteStaticMembers = {
+    "org.assertj.core.api.Assertions.assertThat",
+    "org.assertj.core.api.Assertions.assertThatThrownBy",
+    "java.util.Objects.requireNonNull",
+    "java.util.Objects.requireNonNullElse",
+  },
+  filteredTypes = {
+    "com.sun.*",
+    "io.micrometer.shaded.*",
+    "java.awt.*",
+    "jdk.*",
+    "sun.*",
+  },
+}
+local extendedClientCapabilities = jdtls.extendedClientCapabilities;
+extendedClientCapabilities.resolveAdditionalTextEditsSupport = true;
+
+local java_config = {
+  cmd = jdtls_cmd,
+  completion = completions,
+  root_dir = jdtls.setup.find_root({ '.git' }),
+  on_attach = function(client, bufnr)
+    on_attach_with_format(client, bufnr)
+    jdtls.setup.add_commands()
+    local opts = { silent = true, buffer = bufnr }
+    vim.keymap.set('n', "<leader>ji", jdtls.organize_imports, opts)
+    vim.keymap.set('n', "<leader>jt", jdtls.test_class, opts)
+    vim.keymap.set('n', "<leader>jv", jdtls.extract_variable, opts)
+    vim.keymap.set('v', '<leader>jm',
+      [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]], opts)
+    vim.keymap.set('n', "<leader>jc", jdtls.extract_constant, opts)
+  end,
+  init_options = {
+    extendedClientCapabilities = extendedClientCapabilities,
+  },
+  settings = {
+    java = {
+      format = {
+        settings = {
+          url = nvim_config .. '/codestyle/java.xml'
+        }
+      }
+    }
+  },
+}
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "java" },
+  callback = function()
+    jdtls.start_or_attach(java_config)
+  end,
+  group = nvim_java_group,
+})
 
 vim.lsp.handlers["textDocuments/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

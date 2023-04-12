@@ -40,6 +40,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'ruby-formatter/rufo-vim'
+Plug 'mfussenegger/nvim-jdtls'
 
 " Code outline
 Plug 'stevearc/aerial.nvim'
@@ -51,6 +52,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'scalameta/nvim-metals', {'branch': 'main'}
+Plug ''
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'

@@ -7,7 +7,7 @@ local opts = {
   backends = { "treesitter", "lsp", "markdown", "man" },
   layout = {
     default_direction = "right",
-    placement = "edge",
+    placement = "window",
     preserve_equality = true,
   },
   attach_mode = "window",
@@ -46,9 +46,9 @@ local opts = {
     ["zX"] = "actions.tree_sync_folds",
   },
   on_attach = on_attach,
-  open_automatic = true,
+  open_automatic = false,
 }
 
-vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
+vim.keymap.set('n', '<leader>ä', '<cmd>AerialToggle!<CR>')
 
 require('aerial').setup(opts)
