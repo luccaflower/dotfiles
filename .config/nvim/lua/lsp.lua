@@ -169,9 +169,9 @@ cmp.setup({
     ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-    { name = 'luasnip' },
+    { name = 'nvim_lsp', max_item_count = 5 },
+    { name = 'buffer',   max_item_count = 3 },
+    { name = 'luasnip',  max_item_count = 3 },
 
   })
 })
@@ -269,12 +269,11 @@ local java_config = {
     on_attach_with_format(client, bufnr)
     jdtls.setup.add_commands()
     local opts = { silent = true, buffer = bufnr }
-    vim.keymap.set('n', "<leader>ji", jdtls.organize_imports, opts)
-    vim.keymap.set('n', "<leader>jt", jdtls.test_class, opts)
-    vim.keymap.set('n', "<leader>jv", jdtls.extract_variable, opts)
-    vim.keymap.set('v', '<leader>jm',
+    vim.keymap.set('n', "<leader>åi", jdtls.organize_imports, opts)
+    vim.keymap.set('n', "<leader>åv", jdtls.extract_variable, opts)
+    vim.keymap.set('n', "<leader>åm",
       [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]], opts)
-    vim.keymap.set('n', "<leader>jc", jdtls.extract_constant, opts)
+    vim.keymap.set('n', "<leader>åc", jdtls.extract_constant, opts)
   end,
   init_options = {
     extendedClientCapabilities = extendedClientCapabilities,
