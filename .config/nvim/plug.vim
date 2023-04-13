@@ -37,12 +37,15 @@ Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'ruby-formatter/rufo-vim'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'scalameta/nvim-metals', {'branch': 'main'}
+
+" Snippets
+Plug 'L3MON4D3/LuaSnip', { 'tag': 'v1.2.1', 'do': 'make install_jsregexp' }
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'rafamadriz/friendly-snippets'
 
 " Code outline
 Plug 'stevearc/aerial.nvim'

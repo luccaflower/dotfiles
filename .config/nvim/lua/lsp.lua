@@ -53,27 +53,17 @@ local cmp = require 'cmp'
 local lspkind_comparator = function(conf)
   local lsp_types = require('cmp.types').lsp
   return function(entry1, entry2)
-    if entry1.source.name ~= 'nvim_lsp' then
-      if entry2.source.name == 'nvim_lsp' then
-        return false
-      else
-        return nil
-      end
-    end
     local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
     local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
 
     local priority1 = conf.kind_priority[kind1] or 0
     local priority2 = conf.kind_priority[kind2] or 0
+
     if priority1 == priority2 then
       return nil
     end
     return priority2 < priority1
   end
-end
-
-local label_comparator = function(entry1, entry2)
-  return entry1.completion_item.label < entry2.completion_item.label
 end
 
 local cmp_kinds = {
@@ -104,10 +94,40 @@ local cmp_kinds = {
   Variable = ' ',
 }
 
+local luasnip = require('luasnip')
+require('luasnip.loaders.from_vscode').lazy_load()
+local kind_priority = {
+  Snippet = 9,
+  Keyword = 8,
+  Variable = 7,
+  Function = 6,
+  Method = 5,
+  Field = 4,
+  Property = 4,
+  Constant = 3,
+  Enum = 3,
+  EnumMember = 3,
+  Event = 3,
+  Operator = 3,
+  Reference = 3,
+  Struct = 3,
+  File = 2,
+  Folder = 2,
+  Class = 2,
+  Color = 2,
+  Module = 2,
+  Constructor = 1,
+  Interface = 1,
+  Text = 1,
+  TypeParameter = 1,
+  Unit = 1,
+  Value = 1,
+  Buffers = 0,
+}
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end
   },
   formatting = {
@@ -129,36 +149,14 @@ cmp.setup({
   },
   sorting = {
     comparators = {
-      lspkind_comparator({
-        kind_priority = {
-          Keyword = 12,
-          Function = 11,
-          Method = 11,
-          Field = 10,
-          Property = 10,
-          Constant = 9,
-          Enum = 9,
-          EnumMember = 9,
-          Event = 9,
-          Operator = 9,
-          Reference = 9,
-          Struct = 9,
-          Variable = 8,
-          File = 7,
-          Folder = 7,
-          Class = 4,
-          Color = 4,
-          Module = 4,
-          Constructor = 1,
-          Interface = 1,
-          Snippet = 0,
-          Text = 1,
-          TypeParameter = 1,
-          Unit = 1,
-          Value = 1,
-        },
-      }),
-      label_comparator,
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      lspkind_comparator({ kind_priority = kind_priority }),
+      compare.recently_used,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
     },
   },
   mapping = {
