@@ -153,7 +153,7 @@ cmp.setup({
       cmp.config.compare.exact,
       cmp.config.compare.score,
       lspkind_comparator({ kind_priority = kind_priority }),
-      compare.recently_used,
+      cmp.config.compare.recently_used,
       cmp.config.compare.sort_text,
       cmp.config.compare.length,
       cmp.config.compare.order,
