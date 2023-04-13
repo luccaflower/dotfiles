@@ -2,4 +2,4 @@ alias config='/usr/bin/git --git-dir=/home/lucca/.cfg/ --work-tree=/home/lucca'
 alias :q='exit'
 alias kdiff="kitty +kitten diff"
 alias kssh="kitty +kitten ssh"
-alias fzfvim="fzf | xargs nvim"
+alias fzfvim="fzf | xargs --no-run-if-empty nvim"
