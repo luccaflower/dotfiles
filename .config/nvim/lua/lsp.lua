@@ -274,6 +274,8 @@ local java_config = {
     vim.keymap.set('n', "<leader>åm",
       [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]], opts)
     vim.keymap.set('n', "<leader>åc", jdtls.extract_constant, opts)
+    Mvn_javadoc()
+    Mvn_sources()
   end,
   init_options = {
     extendedClientCapabilities = extendedClientCapabilities,

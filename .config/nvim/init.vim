@@ -7,13 +7,12 @@ so ~/.config/nvim/shortcuts.vim
 lua require("lsp")
 
 " plugin configs
-lua << END
-  require("aerial-config")
-  require("toggleterm-config")
-  require("neo-tree").setup()
-  require("treesitter-config")
-  require("lualine-config")
-END
+lua require("aerial-config")
+lua require("toggleterm-config")
+lua require("neo-tree").setup()
+lua require("treesitter-config")
+lua require("lualine-config")
+lua require("mvn")
 
 " Plugin settings
 let g:secure_modelines_allowed_items = [
