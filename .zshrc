@@ -149,6 +149,7 @@ EDITOR=/sbin/nvim
 export JIRA_API_TOKEN=***REMOVED***
 export PATH="$PATH:/home/lucca/.local/share/coursier/bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

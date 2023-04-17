@@ -271,6 +271,7 @@ local extendedClientCapabilities = jdtls.extendedClientCapabilities;
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true;
 
 local mvn = require('mvn')
+
 local java_config = {
   cmd = jdtls_cmd,
   completion = completions,
