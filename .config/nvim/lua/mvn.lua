@@ -1,3 +1,5 @@
+local M = {}
+
 local root_dir = vim.fs.dirname(vim.fs.find({ '.git', 'pom.xml' },
   { upward = true })[1])
 local function notify(cmd)
@@ -21,32 +23,36 @@ local function mvn_command(cmd, on_exit)
   })
 end
 
-function Mvn_javadoc()
+function M.mvn_javadoc()
   mvn_command(
     'dependency:resolve -Dclassifier=javadoc',
     notify('javadoc'))
 end
 
-function Mvn_sources()
+function M.mvn_sources()
   mvn_command('dependency:sources', notify('sources'))
 end
 
-function Mvn_test()
+function M.mvn_test()
   mvn_command(
     'clean test',
     notify('test'))
 end
 
-function Mvn_package()
+function M.mvn_package()
   mvn_command('clean test', notify('test'))
 end
 
-function Mvn_verify()
+function M.mvn_verify()
   mvn_command('clean verify', notify('verify'))
 end
 
-vim.api.nvim_create_user_command('MvnJavaDoc', Mvn_javadoc, {})
-vim.api.nvim_create_user_command('MvnSources', Mvn_sources, {})
-vim.api.nvim_create_user_command('MvnTest', Mvn_test, {})
-vim.api.nvim_create_user_command('MvnPackage', Mvn_package, {})
-vim.api.nvim_create_user_command('MvnVerify', Mvn_verify, {})
+function M.add_commands()
+  vim.api.nvim_create_user_command('MvnJavaDoc', M.mvn_javadoc, {})
+  vim.api.nvim_create_user_command('MvnSources', M.mvn_sources, {})
+  vim.api.nvim_create_user_command('MvnTest', M.mvn_test, {})
+  vim.api.nvim_create_user_command('MvnPackage', M.mvn_package, {})
+  vim.api.nvim_create_user_command('MvnVerify', M.mvn_verify, {})
+end
+
+return M

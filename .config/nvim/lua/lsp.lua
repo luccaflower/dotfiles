@@ -261,21 +261,25 @@ local completions = {
 local extendedClientCapabilities = jdtls.extendedClientCapabilities;
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true;
 
+local mvn = require('mvn')
 local java_config = {
   cmd = jdtls_cmd,
   completion = completions,
   root_dir = jdtls.setup.find_root({ '.git' }),
-  on_attach = function(client, bufnr)
-    on_attach_with_format(client, bufnr)
+  on_attach = function(_, bufnr)
+    local java_additions = require('java')
+    on_attach(bufnr)
     jdtls.setup.add_commands()
+    java_additions.add_commands()
+    mvn.add_commands()
     local opts = { silent = true, buffer = bufnr }
     vim.keymap.set('n', "<leader>åi", jdtls.organize_imports, opts)
     vim.keymap.set('n', "<leader>åv", jdtls.extract_variable, opts)
     vim.keymap.set('n', "<leader>åm",
       [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]], opts)
     vim.keymap.set('n', "<leader>åc", jdtls.extract_constant, opts)
-    Mvn_javadoc()
-    Mvn_sources()
+    mvn.mvn_javadoc()
+    mvn.mvn_sources()
   end,
   init_options = {
     extendedClientCapabilities = extendedClientCapabilities,
