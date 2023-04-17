@@ -4,23 +4,32 @@ local lsp_keymaps = function(bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   --
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
+  buf_set_keymap('n', '<leader>agD', '<Cmd>lua vim.lsp.buf.declaration()<CR>',
     opts)
-  buf_set_keymap('n', '<space>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e',
+  buf_set_keymap('n', '<leader>agd', '<Cmd>lua vim.lsp.buf.definition()<CR>',
+    opts)
+  buf_set_keymap('n', '<leader>aK', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<leader>agi', '<cmd>lua vim.lsp.buf.implementation()<CR>',
+    opts)
+  buf_set_keymap('n', '<leader>a<C-k>',
+    '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<leader>aD', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
+    opts)
+  buf_set_keymap('n', '<leader>ar', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<leader>aa', '<cmd>lua vim.lsp.buf.code_action()<CR>',
+    opts)
+  buf_set_keymap('n', '<leader>agr', '<cmd>lua vim.lsp.buf.references()<CR>',
+    opts)
+  buf_set_keymap('n', '<leader>ae',
     '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',
+  buf_set_keymap('n', '<leader>a[d',
+    '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', '<leader>a]d',
+    '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<leader>aq',
+    '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',
     opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+  buf_set_keymap("n", "<leader>af", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 end
 
 local on_attach = function(bufnr)
@@ -273,11 +282,11 @@ local java_config = {
     java_additions.add_commands()
     mvn.add_commands()
     local opts = { silent = true, buffer = bufnr }
-    vim.keymap.set('n', "<leader>åi", jdtls.organize_imports, opts)
-    vim.keymap.set('n', "<leader>åv", jdtls.extract_variable, opts)
-    vim.keymap.set('n', "<leader>åm",
+    vim.keymap.set('n', "<leader>aji", jdtls.organize_imports, opts)
+    vim.keymap.set('n', "<leader>ajv", jdtls.extract_variable, opts)
+    vim.keymap.set('v', "<leader>ajm",
       [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]], opts)
-    vim.keymap.set('n', "<leader>åc", jdtls.extract_constant, opts)
+    vim.keymap.set('n', "<leader>ajc", jdtls.extract_constant, opts)
     mvn.mvn_javadoc()
     mvn.mvn_sources()
   end,
