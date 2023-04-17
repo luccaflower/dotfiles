@@ -169,7 +169,7 @@ cmp.setup({
     ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', max_item_count = 5 },
+    { name = 'nvim_lsp', max_item_count = 10 },
     { name = 'buffer',   max_item_count = 3 },
     { name = 'luasnip',  max_item_count = 3 },
 

@@ -3,3 +3,6 @@ alias :q='exit'
 alias kdiff="kitty +kitten diff"
 alias kssh="kitty +kitten ssh"
 alias fzfvim="fzf | xargs --no-run-if-empty nvim"
+alias rmvn-test='rerun -xp "**/*.java" -x -- mvn clean test'
+alias fzfd='find . -type d -print | fzf --tiebreakt=length'
+alias fzftmux='tmux new -c $(fzfd)'
