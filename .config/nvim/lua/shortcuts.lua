@@ -8,6 +8,9 @@ end
 global_keymap('', 'H', '^', 'Start of line')
 global_keymap('', 'L', '$', 'End of line')
 
+-- Vifm
+global_keymap('n', '<leader>f', ':Vifm<CR>', 'Open file manager')
+
 -- ; as :
 global_keymap('n', ';', ':', '')
 

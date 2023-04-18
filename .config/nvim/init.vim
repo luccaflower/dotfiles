@@ -11,7 +11,6 @@ lua require("shortcuts")
 " plugin configs
 lua require("aerial-config")
 lua require("toggleterm-config")
-lua require("neo-tree").setup()
 lua require("treesitter-config")
 lua require("lualine-config")
 lua require("mvn")
