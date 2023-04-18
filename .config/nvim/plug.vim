@@ -16,6 +16,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim'
+Plug 'folke/which-key.nvim'
 
 " GUI enhancements
 Plug 'machakann/vim-highlightedyank'

@@ -1,10 +1,12 @@
 
 so ~/.config/nvim/plug.vim
 so ~/.config/nvim/colors.vim
-so ~/.config/nvim/shortcuts.vim
 
 " LSP configuration
 lua require("lsp")
+
+" shortcuts
+lua require("shortcuts")
 
 " plugin configs
 lua require("aerial-config")
@@ -13,6 +15,7 @@ lua require("neo-tree").setup()
 lua require("treesitter-config")
 lua require("lualine-config")
 lua require("mvn")
+lua require("whichkey")
 
 " Plugin settings
 let g:secure_modelines_allowed_items = [
@@ -27,25 +30,6 @@ let g:secure_modelines_allowed_items = [
                 \ "rightleft",   "rl",   "norightleft", "norl",
                 \ "colorcolumn"
                 \ ]
-
-" Lightline
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileencoding', 'filetype' ], 
-      \              [ 'gitbranch' ] ],
-      \ },
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
-function! LightlineFilename()
-  return expand('%:t') !=# '' ? @% : '[No Name]'
-endfunction
 
 " from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 if executable('ag')
@@ -157,7 +141,6 @@ cnoremap %s/ %sm/
 " =============================================================================
 " # GUI settings
 " =============================================================================
-set guioptions-=T " Remove toolbar
 set vb t_vb= " No more beeps
 set backspace=2 " Backspace over newlines
 set nofoldenable
@@ -182,7 +165,24 @@ set shortmess+=c " don't give |ins-completion-menu| messages.
 " Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
 set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 
+" Fuzzysearch for files
+let g:fzf_layout = { 'down': '~20%' }
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
+" List files
+function! s:list_cmd()
+  let base = fnamemodify(expand('%'), ':h:.:S')
+  return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', shellescape(expand('%')))
+endfunction
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
+  \                               'options': '--tiebreak=index'}, <bang>0)
 " =============================================================================
 " # Autocommands
 " =============================================================================
@@ -190,6 +190,9 @@ set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 " Prevent accidental writes to buffers that shouldn't be edited
 autocmd BufRead *.orig set readonly
 autocmd BufRead *.pacnew set readonly
+
+" Enable type inlay hints
+autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
