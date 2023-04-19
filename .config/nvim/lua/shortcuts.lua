@@ -63,10 +63,3 @@ global_keymap('n', 'k', 'gk', '')
 
 global_keymap('', '<C-P>', ':Files<CR>', 'Files')
 global_keymap('n', '<leader>ö', ':Buffers<CR>', 'Buffers')
-
---" Use <Tab> and <S-Tab> to navigate through popup menu
---inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
---inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-global_keymap('i', '<Tab>', 'pumvisible() ? "<C-n>" : "<Tab>"', 'Next menu item')
-global_keymap('i', '<S-Tab>', 'pumvisible() ? "<C-p>" : "<S-Tab>"',
-  'Previous menu item')
