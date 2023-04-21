@@ -62,7 +62,8 @@ local servers = {
   "rust_analyzer",
   "texlab",
   "solargraph",
-  "bashls"
+  "bashls",
+  "lemminx"
 }
 
 local cmp = require 'cmp'
