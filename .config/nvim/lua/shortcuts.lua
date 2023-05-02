@@ -11,9 +11,6 @@ global_keymap('', 'L', '$', 'End of line')
 -- Vifm
 global_keymap('n', '<leader>f', ':Vifm<CR>', 'Open file manager')
 
--- ; as :
-global_keymap('n', ';', ':', '')
-
 -- Copy to clipboard
 global_keymap('v', '<leader>y', '"+y', 'Yank selection to clipboard')
 global_keymap('n', '<leader>Y', '"+yg', 'Yank rest of line to clipboard')

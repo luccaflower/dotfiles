@@ -17,6 +17,7 @@ Plug 'akinsho/toggleterm.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'folke/which-key.nvim'
 Plug 'vifm/vifm.vim'
+Plug 'ThePrimeagen/harpoon'
 
 " GUI enhancements
 Plug 'machakann/vim-highlightedyank'

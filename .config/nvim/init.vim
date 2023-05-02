@@ -15,6 +15,7 @@ lua require("treesitter-config")
 lua require("lualine-config")
 lua require("mvn")
 lua require("whichkey")
+lua require("harpoon-conf")
 
 " Plugin settings
 let g:secure_modelines_allowed_items = [
