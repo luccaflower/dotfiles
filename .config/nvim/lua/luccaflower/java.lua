@@ -1,11 +1,15 @@
 local M = {}
-local root_dir = vim
+local function root_dir()
+  return vim
     .fs
     .dirname(vim.fs.find({ 'java' }, { type = 'directory' })[1]) .. '/java/'
-local current_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0)) .. '/'
+  end
+local function current_dir()
+  return vim.fs.dirname(vim.api.nvim_buf_get_name(0)) .. '/'
+end
 
 function M.java_print_root()
-  print(root_dir)
+  print(root_dir())
 end
 
 local class_template = [[
@@ -22,16 +26,16 @@ end
 
 function M.new_class()
   vim.ui.input(
-    { prompt = "New class: " .. current_dir },
+    { prompt = "New class: " .. current_dir() },
     function(name)
-      local file = current_dir .. name
+      local file = current_dir() .. name
       local buf = vim.api.nvim_create_buf(true, {})
       vim.api.nvim_buf_set_name(buf, file .. '.java')
       vim.api.nvim_buf_set_option(buf, 'buftype', '')
       vim.api.nvim_buf_set_option(buf, 'filetype', 'java')
       vim.api.nvim_buf_set_option(buf, 'modifiable', true)
       vim.api.nvim_set_current_buf(buf)
-      local package = string.gsub(vim.fs.dirname(trim_prefix(root_dir, file)),
+      local package = string.gsub(vim.fs.dirname(trim_prefix(root_dir(), file)),
         '/', '.')
       local insertion = class_template
           :gsub("{{package}}", package)

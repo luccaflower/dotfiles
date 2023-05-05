@@ -1,15 +1,18 @@
 vim.g.mapleader = ' '
 local function global_keymap(mode, shortcut, cmd, desc)
-  vim.api.nvim_set_keymap(mode, shortcut, cmd,
-    { noremap = true, silent = true, desc = desc })
+    vim.api.nvim_set_keymap(mode, shortcut, cmd,
+        { noremap = true, silent = true, desc = desc })
 end
 
 -- Jump to start and end of line using the home row keys
 global_keymap('', 'H', '^', 'Start of line')
 global_keymap('', 'L', '$', 'End of line')
 
--- Vifm
-global_keymap('n', '<leader>f', ':Vifm<CR>', 'Open file manager')
+--file manager
+global_keymap('n', '<leader>f', ':NeoTreeFloatToggle<CR>',
+    'Open file manager (floating)')
+global_keymap('n', '<leader>F', ':NeoTreeShowToggle<CR>',
+    'Open file manager (window)')
 
 -- Copy to clipboard
 global_keymap('v', '<leader>y', '"+y', 'Yank selection to clipboard')
@@ -28,8 +31,8 @@ global_keymap('n', '<leader>s', ':Rg<CR>', 'Search for file')
 -- Open new file adjacent to current file
 --nnoremap <leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
 global_keymap(
-  'n', '<leader>o', ':e <C-R>=expand("%:p:h") . "/" <CR>',
-  'Open adjacent file')
+    'n', '<leader>o', ':e <C-R>=expand("%:p:h") . "/" <CR>',
+    'Open adjacent file')
 
 -- Ctrl+h to stop searching
 global_keymap('n', '<C-h>', ':nohlsearch<CR>', 'Remove higlights')

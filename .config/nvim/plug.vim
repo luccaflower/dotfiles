@@ -16,7 +16,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'folke/which-key.nvim'
-Plug 'vifm/vifm.vim'
+Plug 'nvim-neo-tree/neo-tree.nvim'
+Plug 'kylechui/nvim-surround'
 Plug 'ThePrimeagen/harpoon'
 
 " GUI enhancements

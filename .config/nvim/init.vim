@@ -2,20 +2,8 @@
 so ~/.config/nvim/plug.vim
 so ~/.config/nvim/colors.vim
 
-" LSP configuration
-lua require("lsp")
-
-" shortcuts
-lua require("shortcuts")
-
 " plugin configs
-lua require("aerial-config")
-lua require("toggleterm-config")
-lua require("treesitter-config")
-lua require("lualine-config")
-lua require("mvn")
-lua require("whichkey")
-lua require("harpoon-conf")
+lua require("luccaflower")
 
 " Plugin settings
 let g:secure_modelines_allowed_items = [

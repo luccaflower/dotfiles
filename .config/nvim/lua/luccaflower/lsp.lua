@@ -63,7 +63,6 @@ local servers = {
   "texlab",
   "solargraph",
   "bashls",
-  "lemminx"
 }
 
 local cmp = require 'cmp'
@@ -211,6 +210,9 @@ for _, lsp in ipairs(servers) do
   configure_lsp(lsp, on_attach_with_format, {})
 end
 
+configure_lsp("lemminx", on_attach_no_format, {})
+
+
 local lua_ls_settings = {
   Lua = {
     runtime = {
@@ -280,7 +282,7 @@ local completions = {
 local extendedClientCapabilities = jdtls.extendedClientCapabilities;
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true;
 
-local mvn = require('mvn')
+local mvn = require('luccaflower.mvn')
 
 local function java_highlights()
   vim.api.nvim_set_hl(0, "@parameter", { link = "TSVariable" })
