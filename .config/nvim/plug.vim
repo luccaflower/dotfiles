@@ -24,8 +24,8 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
 Plug 'RRethy/nvim-base16'
-Plug 'glepnir/indent-guides.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'stevearc/dressing.nvim'
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'

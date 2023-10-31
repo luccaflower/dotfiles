@@ -31,7 +31,8 @@ local lsp_keymaps = function(bufnr)
     '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
     opts("Show line diagnostics"))
   buf_set_keymap('n', 'g[d',
-    '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts("Go to previous diagnostic"))
+    '<cmd>lua vim.diagnostic.goto_prev()<CR>',
+    opts("Go to previous diagnostic"))
   buf_set_keymap('n', 'g]d',
     '<cmd>lua vim.diagnostic.goto_next()<CR>', opts("Go to next diagnostic"))
   buf_set_keymap('n', 'gq',
@@ -84,34 +85,6 @@ local lspkind_comparator = function(conf)
   end
 end
 
-local cmp_kinds = {
-  Class = ' ',
-  Color = ' ',
-  Constant = 'ﲀ ',
-  Constructor = ' ',
-  Enum = '練',
-  EnumMember = ' ',
-  Event = ' ',
-  Field = ' ',
-  File = '',
-  Folder = ' ',
-  Function = ' ',
-  Interface = 'ﰮ ',
-  Keyword = ' ',
-  Method = ' ',
-  Module = ' ',
-  Operator = '',
-  Property = ' ',
-  Reference = ' ',
-  Snippet = ' ',
-  Struct = ' ',
-  Text = ' ',
-  TypeParameter = ' ',
-  Unit = '塞',
-  Value = ' ',
-  Variable = ' ',
-}
-
 local luasnip = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()
 local kind_priority = {
@@ -142,6 +115,7 @@ local kind_priority = {
   Value = 1,
   Buffers = 0,
 }
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -150,8 +124,6 @@ cmp.setup({
   },
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = string.format('%s %s', cmp_kinds[vim_item.kind],
-        vim_item.kind)
       vim_item.menu = ({
         nvim_lsp = '[LSP]',
         luasnip = '[Snp]',
@@ -333,8 +305,26 @@ local java_config = {
           url = nvim_config .. '/codestyle/java.xml'
         }
       }
+    },
+    maven = {
+      downloadSources = true
+    },
+    implementationsCodeLens = {
+      enabled = true
+    },
+    referencesCodeLens = {
+      enabled = true
+    },
+    references = {
+      enabled = true
+    },
+    inlayHinst = {
+      parameterNames = {
+        enabled = "all"
+      }
     }
   },
+  signatureHelp = { enabled = true }
 }
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "java" },
@@ -402,6 +392,3 @@ require 'nvim-treesitter.configs'.setup {
 require('presence'):setup({
   neovim_image_text = "vim user btw"
 })
-
--- Indent guides
-require('indent_guides').setup({})
