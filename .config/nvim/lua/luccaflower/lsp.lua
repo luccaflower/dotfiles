@@ -344,6 +344,21 @@ vim.lsp.handlers["textDocuments/publishDiagnostics"] = vim.lsp.with(
 
 require("mason").setup()
 require("mason-lspconfig").setup()
+-- Elixir
+local elixir = require("elixir")
+require("elixir.elixirls")
+
+elixir.setup {
+  nextls = {
+    enable = true,
+    on_attach = on_attach_with_format
+  },
+  credo = { enable = false },
+  elixirls = {
+    enable = true,
+    on_attach = on_attach_no_format
+  }
+}
 
 -- Rust-tools
 require('rust-tools').setup({
@@ -376,16 +391,6 @@ vim.api.nvim_create_autocmd("FileType", {
   group = nvim_metals_group,
 })
 
--- Rainbow brackets
-require 'nvim-treesitter.configs'.setup {
-  rainbow = {
-    enable = true,
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
-  }
-}
 
 
 -- Discord Rich Presence

@@ -44,6 +44,7 @@ Plug 'ruby-formatter/rufo-vim'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'scalameta/nvim-metals', {'branch': 'main'}
+Plug 'elixir-tools/elixir-tools.nvim', {'tag': 'stable'}
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip', { 'tag': 'v1.2.1', 'do': 'make install_jsregexp' }
