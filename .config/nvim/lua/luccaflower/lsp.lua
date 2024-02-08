@@ -49,12 +49,12 @@ local on_attach = function(bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
-local on_attach_with_format = function(client, bufnr)
+local on_attach_with_format = function(_client, bufnr)
   on_attach(bufnr)
   vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 end
 
-local on_attach_no_format = function(client, bufnr)
+local on_attach_no_format = function(_client, bufnr)
   on_attach(bufnr)
 end
 
@@ -64,6 +64,8 @@ local servers = {
   "texlab",
   "solargraph",
   "bashls",
+  "tsserver",
+  "eslint"
 }
 
 local cmp = require 'cmp'
@@ -181,6 +183,12 @@ end
 for _, lsp in ipairs(servers) do
   configure_lsp(lsp, on_attach_with_format, {})
 end
+
+lspconfig.elixirls.setup {
+  cmd = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
+  capabilities = capabilities,
+  on_attach = on_attach_no_format,
+}
 
 configure_lsp("lemminx", on_attach_no_format, {})
 
@@ -344,21 +352,6 @@ vim.lsp.handlers["textDocuments/publishDiagnostics"] = vim.lsp.with(
 
 require("mason").setup()
 require("mason-lspconfig").setup()
--- Elixir
-local elixir = require("elixir")
-require("elixir.elixirls")
-
-elixir.setup {
-  nextls = {
-    enable = true,
-    on_attach = on_attach_with_format
-  },
-  credo = { enable = false },
-  elixirls = {
-    enable = true,
-    on_attach = on_attach_no_format
-  }
-}
 
 -- Rust-tools
 require('rust-tools').setup({
