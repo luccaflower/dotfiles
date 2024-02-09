@@ -46,6 +46,9 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'scalameta/nvim-metals', {'branch': 'main'}
 Plug 'elixir-tools/elixir-tools.nvim', {'tag': 'stable'}
 
+" Formatting
+Plug 'nvimtools/none-ls.nvim', {'branch': 'main'}
+
 " Snippets
 Plug 'L3MON4D3/LuaSnip', { 'tag': 'v1.2.1', 'do': 'make install_jsregexp' }
 Plug 'saadparwaiz1/cmp_luasnip'

@@ -363,6 +363,8 @@ require('rust-tools').setup({
   },
 })
 
+local null_ls = require("null-ls")
+null_ls.setup({ sources = { null_ls.builtins.formatting.prettier } })
 -- Scala
 local metals = require("metals")
 local metals_config = metals.bare_config()
@@ -383,8 +385,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   group = nvim_metals_group,
 })
-
-
 
 -- Discord Rich Presence
 require('presence'):setup({
