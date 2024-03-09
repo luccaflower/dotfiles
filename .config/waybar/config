@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/media-ncspot", "custom/media-spotify"],
     "modules-center": [],
     "modules-right": ["custom/weather", "pulseaudio", "network", "sway/language","idle_inhibitor", "battery", "battery#bat2", "clock", "tray"],
     // Modules configuration
@@ -143,14 +143,25 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
+    "custom/media-ncspot": {
         "format": "{icon} {}",
         "max-length": 40,
         "format-icons": {
             "default": ""
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
+        "exec": "$HOME/.config/waybar/mediaplayer.sh ncspot 2> /dev/null", // Script in resources folder
+        "interval": 1
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/media-spotify": {
+        "format": "{icon} {}",
+        "max-length": 40,
+        "format-icons": {
+            "default": ""
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.sh spotify 2> /dev/null", // Script in resources folder
         "interval": 1
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
