@@ -1,3 +1,2 @@
-output HDMI-A-1 resolution 1680x1050 position 1680,0
-output HDMI-A-2 resolution 1680x1050 position 0,0
-
+output HDMI-A-1 resolution 1920x1080 position 0,0 scale 1
+output eDP-1 resolution 2560x1600 position 0,1080 scale 1
