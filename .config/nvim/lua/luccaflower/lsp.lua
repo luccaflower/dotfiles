@@ -65,7 +65,8 @@ local servers = {
   "solargraph",
   "bashls",
   "tsserver",
-  "eslint"
+  "eslint",
+  "clojure_lsp"
 }
 
 local cmp = require 'cmp'
@@ -281,7 +282,7 @@ local java_config = {
     java_highlights()
     local buf_set_keymap = buf_set_keymap_for(bufnr)
     jdtls.setup.add_commands()
-    require("java").add_commands()
+    require("luccaflower.java").add_commands()
     mvn.add_commands()
     local opts = function(desc)
       return { noremap = true, silent = true, desc = desc }

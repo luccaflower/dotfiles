@@ -45,6 +45,9 @@ Plug 'mfussenegger/nvim-jdtls'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'scalameta/nvim-metals', {'branch': 'main'}
 Plug 'elixir-tools/elixir-tools.nvim', {'tag': 'stable'}
+Plug 'Olical/conjure'
+Plug 'LhKipp/nvim-nu', {'do': ':TSInstall nu'}
+
 
 " Formatting
 Plug 'nvimtools/none-ls.nvim', {'branch': 'main'}
