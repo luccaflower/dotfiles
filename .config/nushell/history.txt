@@ -1,0 +1,170 @@
+ls
+ls | sort-by size
+ls
+ls | sort-by size | table --abbreviated 
+ls | sort-by size | table --abbreviated 10
+ls | sort-by size | table --abbreviated 5
+ls | sort-by size | table
+ls | sort-by size
+ls | sort-by size | table
+ls | sort-by size | to-json
+ls | sort-by size | to json
+ls | sort-by size | to json | jq
+sudo pacman -S jq
+ls | sort-by size | to json | jq
+filter --help
+ls | sort-by size 
+ls | sort-by size | table
+ls | sort-by size | filter {|e| e.type != dir}
+filter --help
+ls | sort-by size | filter {|e| $e.type != dir}
+ls | sort-by size | filter {|e| $e.type != dir} | to json
+ls
+neofetch 
+ls
+cd ~/.config/
+ls
+cd sway/
+ls
+nvim config
+ls
+which nu
+chsh
+cd ~
+ls
+$env
+ls -l
+ls -a
+nvim .zshrc
+$EDITOR
+nvim $nu.env-path
+config nu
+nvim $nu.env-path
+config nu
+nvim .config/nvim/lua/luccaflower/ts-parsers.lua
+nvim .config/nvim/lua/luccaflower/init.lua
+config nu
+nvim .config/nvim/lua/luccaflower/ts-parsers.lua
+nvim .config/nvim/plug.vim
+nvim .config/nvim/init.vim
+nvim .config/nvim/lua/luccaflower/ts-parsers.lua
+config nu
+register "nu-plugin-highlight"
+cargo install nu_plugin_highlight
+$env.PATH
+ls .cargo/
+ls .cargo/bin/
+$env.PATH | split row
+$env.PATH | split row (char esep)
+$env.PATH
+$env.PATH | split row (char esep) | append ".cargo/bin"
+$env.PATH | append ".cargo/bin"
+$env.PATH = ($env.PATH | split row (char esep) | append ".cargo/bin")
+nu_plugin_highlight 
+which nu_plugin_highlight
+which nu_plugin_highlight | select path
+which nu_plugin_highlight | select path | echo
+which nu_plugin_highlight | select path | as text
+which nu_plugin_highlight | select path | cat
+which nu_plugin_highlight | get path
+which nu_plugin_highlight | get path | to text
+which nu_plugin_highlight | get path | to text | register
+register (which nu_plugin_highlight | get path | to text)
+(which nu_plugin_highlight | get path | to text)
+register ./.cargo/bin/nu_plugin_highlight
+nvim .config/nvim/lua/luccaflower/ts-parsers.lua
+exa
+sudo pacman -S exa
+sudo pacman -S pc
+sudo pacman -S jc
+cargo install nu_plugin_regex
+cd git/
+git clone https://github.com/nushell/nushell/tree/main/crates/nu_plugin_gstat
+cargo install nu_plugin_gstat
+which nu_plugin_gstat
+register nu_plugin_gstat
+register /usr/bin/nu_plugin_gstat
+gstat
+ll
+zellij
+sudo pacman -S zellij
+zellij
+config nu
+ll
+la
+ls
+config nu
+ls
+l
+ll
+la
+du
+du -sh *
+du *
+du -h
+du
+pwd
+cd git/
+cd ..
+cd git/
+du
+cd ..
+ls
+ll
+keybindings list
+ls
+^ls
+ls
+config nu 
+ll
+la
+cat .zshrc
+cargo install starship
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
+ls .cargo/bin/
+$env.PATH
+config nu 
+$env.PATH
+config env
+$env.PATH
+config env
+$env.PATH
+$env.EDITOR
+$env.PATH = ($env.PATH <\n>    | split row (char esep) <\n>    | append ($env.HOME | path join ".local" ".bin")<\n>    | append ($env.CARGO_HOME | path join "bin"))
+$env.CARGO_HOME
+$env.PATH
+config env
+$env.PATH
+fzf
+starship init nu | save -f ~/.cache/starship/init.nu
+cd git/algorithms/
+cd ..
+nu --version
+config nu
+cd aoc2023/
+cd ~/.config/
+nvim starship.toml
+ls
+nvim starship.toml
+ls
+nvim starship.toml
+ls
+cd ~/.config/
+ls
+cd nushell/
+ls
+git add .
+config add .
+cd ~
+ls
+nvim .zshrc
+config nu
+cd .config/nushell/
+ls
+dot-config add .
+nvim ~/.zsh/include/aliases
+config nu
+aliases
+dot-config
+dot-config add .config/nushell
