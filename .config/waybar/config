@@ -174,7 +174,8 @@
     "custom/appointment": {
         "format": "{}",
         "exec": "calcurse -n | paste -s | sed 's/\\t//g'",
-        "interval": 5
+        "interval": 5,
+        "on-click": "kitty --class 'calendar' -- calcurse",
     }
 }
 

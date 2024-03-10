@@ -18,11 +18,14 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu $term --class=launcher -e env TERMINAL_COMMAND='$term -e' sway-launcher-desktop
+set $menu kitty --class=launcher -e env TERMINAL_COMMAND='$term -e' sway-launcher-desktop
 set $lock swaylock -i $HOME/Pictures/lockscreen.png
 
 #japanese input
 exec --no-startup-id fcitx5 -d
+
+#calcurse notifications
+exec calcurse --daemon
 
 #swaync
 exec swaync
@@ -244,7 +247,8 @@ bar {
 for_window {
     [app_id="launcher"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
     [app_id="firefox"] inhibit_idle fullscreen
-    [title="ranger"] floating enable, sticky enable, resize set 60 ppt 60 ppt, border pixel 10
+    [app_id="ranger"] floating enable, sticky enable, resize set 60 ppt 60 ppt, border pixel 10
+    [app_id="calendar"] floating enable, sticky enable, resize set 90 ppt 90 ppt, border pixel 10
     [window_role="pop-up"] floating enable
     [window_role="bubble"] floating enable
     [window_role="dialog"] floating enable
