@@ -764,5 +764,8 @@ $env.config = {
 alias la = ls -a
 alias ll = ls -l
 alias dot-config = /usr/bin/git --git-dir=/home/lucca/.cfg/ --work-tree=/home/lucca
+alias cat = bat
 #starship
 use ~/.cache/starship/init.nu
+#carapace
+source ~/.cache/carapace/init.nu

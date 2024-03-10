@@ -108,4 +108,11 @@ $env.PATH = ($env.PATH
     | append ($env.CARGO_HOME | path join "bin")
     | append ($env.HOME | path join ".fzf" "bin")
     | append ($env.HOME | path join ".local" "share" "coursier" "bin"))
+$env.SHELL = /usr/bin/nu
+# Starship
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
 
+# Completions
+mkdir ~/.cache/carapace
+carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
