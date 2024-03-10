@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media-ncspot", "custom/media-spotify"],
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/media-ncspot", "custom/media-spotify", "custom/appointment"],
     "modules-center": [],
     "modules-right": ["custom/weather", "pulseaudio", "network", "sway/language","idle_inhibitor", "battery", "battery#bat2", "clock", "tray"],
     // Modules configuration
@@ -170,6 +170,11 @@
         "exec": "curl -m 1 wttr.in/uppsala?format=3 2>/dev/null",
         "interval": 60,
         "on-click": "firefox wttr.in/uppsala"
+    },
+    "custom/appointment": {
+        "format": "{}",
+        "exec": "calcurse -n | paste -s | sed 's/\\t//g'",
+        "interval": 5
     }
 }
 
