@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Ranger
+GenericName=Files
+Comment=Terminal file manager
+Exec=kitty --class ranger ranger
+Path=$HOME
+MimeType=inode/directory
+Categories=Files;

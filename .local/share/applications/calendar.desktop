@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Calcurse
+GenericName=Calendar
+Comment=Ncurses calendar
+Exec=kitty --class 'calendar' calcurse
+Path=$HOME
+Categories=Utilities;
