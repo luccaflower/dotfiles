@@ -30,4 +30,4 @@ general.periodicsave=0
 general.systemevents=yes
 notification.command=calcurse -n | xargs -0 notify-send "Appointment"
 notification.notifyall=all
-notification.warning=300
+notification.warning=900
