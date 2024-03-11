@@ -116,3 +116,6 @@ starship init nu | save -f ~/.cache/starship/init.nu
 # Completions
 mkdir ~/.cache/carapace
 carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
+
+# keyboard layout switching
+$env.GTK_IM_MODULE = fcitx
