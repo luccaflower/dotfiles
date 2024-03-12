@@ -21,9 +21,6 @@ set $term kitty
 set $menu kitty --class=launcher -e env TERMINAL_COMMAND='$term -e' sway-launcher-desktop
 set $lock swaylock -i $HOME/Pictures/lockscreen.png
 
-#japanese input
-exec --no-startup-id fcitx5 -d
-
 #calcurse notifications
 exec calcurse --daemon
 
@@ -68,7 +65,8 @@ output * bg $HOME/Pictures/xenia-wallpaper.png fill
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 input * {
-    xkb_layout se
+    xkb_layout se,us,us(intl)
+    xkb_options grp:ctrls_toggle
 }
 
 input type:touchpad {
