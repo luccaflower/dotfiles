@@ -26,14 +26,8 @@ global_keymap('n', '<leader>P', '"+P', 'Paste from clipboard before cursor')
 global_keymap('v', '<leader>p', '"+p', 'Paste from clipboard after cursor')
 global_keymap('v', '<leader>P', '"+P', 'Paste from clipboard before cursor')
 
-global_keymap('n', '<leader>s', ':Rg<CR>', 'Search for file')
-
 -- Open new file adjacent to current file
 --nnoremap <leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
-global_keymap(
-    'n', '<leader>o', ':e <C-R>=expand("%:p:h") . "/" <CR>',
-    'Open adjacent file')
-
 -- Ctrl+h to stop searching
 global_keymap('n', '<C-h>', ':nohlsearch<CR>', 'Remove higlights')
 global_keymap('v', '<C-h>', ':nohlsearch<CR>', 'Remove higlights')

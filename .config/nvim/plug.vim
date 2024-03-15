@@ -30,7 +30,7 @@ Plug 'stevearc/dressing.nvim'
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 
 " Semantic language support
 Plug 'neovim/nvim-lspconfig'
