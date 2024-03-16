@@ -254,4 +254,5 @@ for_window {
 }
 
 include ~/.config/sway/custom/*
+include ~/.config/sway/shared/*
 include /etc/sway/config.d/*

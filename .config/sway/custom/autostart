@@ -1,2 +1,0 @@
-# Discord
-exec discord && sway '[class="Discord"]' move container to workspace 4
