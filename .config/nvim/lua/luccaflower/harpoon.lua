@@ -8,5 +8,3 @@ vim.keymap.set('n', '<leader>hh', function() ui.nav_next() end,
   { desc = "Navigate to next harpoon" })
 vim.keymap.set('n', '<leader>hH', function() ui.nav_prev() end,
   { desc = "Navigate to previous harpoon" })
-vim.keymap.set('n', '<leader>H', function() ui.nav_prev() end,
-  { desc = "Navigate to previous harpoon" })

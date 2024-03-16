@@ -1,18 +1,12 @@
 vim.g.mapleader = ' '
 local function global_keymap(mode, shortcut, cmd, desc)
-    vim.api.nvim_set_keymap(mode, shortcut, cmd,
-        { noremap = true, silent = true, desc = desc })
+  vim.api.nvim_set_keymap(mode, shortcut, cmd,
+    { noremap = true, silent = true, desc = desc })
 end
 
 -- Jump to start and end of line using the home row keys
 global_keymap('', 'H', '^', 'Start of line')
 global_keymap('', 'L', '$', 'End of line')
-
---file manager
-global_keymap('n', '<leader>f', ':NeoTreeFloatToggle<CR>',
-    'Open file manager (floating)')
-global_keymap('n', '<leader>F', ':NeoTreeShowToggle<CR>',
-    'Open file manager (window)')
 
 -- Copy to clipboard
 global_keymap('v', '<leader>y', '"+y', 'Yank selection to clipboard')
@@ -50,10 +44,7 @@ global_keymap('', '<F1>', '<Esc>', '')
 global_keymap('i', '<F1>', '<Esc>', '')
 
 global_keymap('', '<leader>i', ':e $MYVIMRC<CR>', 'Open init.vim')
-
+global_keymap('', '<leader>r', ':so $MYVIMRC<CR>', 'Reload init.vim')
 -- Move by line
 global_keymap('n', 'j', 'gj', '')
 global_keymap('n', 'k', 'gk', '')
-
-global_keymap('', '<C-P>', ':Files<CR>', 'Files')
-global_keymap('n', '<leader>ö', ':Buffers<CR>', 'Buffers')

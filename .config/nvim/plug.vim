@@ -19,6 +19,7 @@ Plug 'folke/which-key.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'kylechui/nvim-surround'
 Plug 'ThePrimeagen/harpoon'
+Plug 'hadronized/hop.nvim'
 
 " GUI enhancements
 Plug 'machakann/vim-highlightedyank'

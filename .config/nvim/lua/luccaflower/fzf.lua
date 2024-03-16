@@ -9,9 +9,12 @@ local function list_cmd()
       (base == '.' and '' or ' | proximity-sort ' .. vim.fn.shellescape(vim.fn.expand('%')))
 end
 
-local fzf = require("fzf-lua").setup({})
+require("fzf-lua").setup({})
 vim.keymap.set("n", "<leader>o",
   function() require("fzf-lua").files({ cmd = list_cmd() }) end,
-  { silent = true })
+  { silent = true, desc = "Files" })
 vim.keymap.set("n", "<leader>s",
-  "<cmd>lua require('fzf-lua').grep()<CR><CR>", { silent = true })
+  "<cmd>lua require('fzf-lua').grep()<CR><CR>",
+  { silent = true, desc = "Search files" })
+vim.keymap.set("n", "<leader>b", function() require("fzf-lua").lines() end,
+  { silent = true, desc = "Search buffers" })
