@@ -48,3 +48,7 @@ global_keymap('', '<leader>r', ':so $MYVIMRC<CR>', 'Reload init.vim')
 -- Move by line
 global_keymap('n', 'j', 'gj', '')
 global_keymap('n', 'k', 'gk', '')
+global_keymap('t', '<ESC>', '<C-\\><C-n>', 'Exit terminal mode')
+global_keymap(
+  'n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>',
+  'Open adjacent file')
