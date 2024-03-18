@@ -104,7 +104,7 @@ input type:touchpad {
     bindsym $mod+p exec grim -g "$(slurp -d)" - | wl-copy -t image/png
 
     # Lockscreen
-    bindsym $mod+l exec $lock
+    bindsym $mod+Shift+l exec $lock
 #
 # Moving around:
 #
