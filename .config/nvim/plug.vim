@@ -20,6 +20,7 @@ Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'kylechui/nvim-surround'
 Plug 'ThePrimeagen/harpoon'
 Plug 'hadronized/hop.nvim'
+Plug 'rcarriga/nvim-notify'
 
 " GUI enhancements
 Plug 'machakann/vim-highlightedyank'

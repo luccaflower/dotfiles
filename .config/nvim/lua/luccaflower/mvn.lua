@@ -1,7 +1,10 @@
 local M = {}
 
-local root_dir = vim.fs.dirname(vim.fs.find({ '.git', 'pom.xml' },
-  { upward = true })[1])
+local function root_dir()
+  return vim.fs.dirname(vim.fs.find({ '.git', 'pom.xml' },
+    { upward = true })[1])
+end
+
 local function notify(cmd)
   return function(_, exit_code, _)
     if exit_code == 0 then
@@ -14,7 +17,7 @@ end
 
 local function mvn_command(cmd, on_exit)
   vim.fn.jobstart('mvn ' .. cmd, {
-    cwd = root_dir,
+    cwd = root_dir(),
     stderr_buffered = true,
     on_exit = on_exit,
     on_stderr = function(_, data, name)

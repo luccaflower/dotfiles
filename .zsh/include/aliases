@@ -1,0 +1,11 @@
+alias config='/usr/bin/git --git-dir=/home/lucca/.cfg/ --work-tree=/home/lucca'
+alias :q='exit'
+alias kdiff="kitty +kitten diff"
+alias kssh="kitty +kitten ssh"
+alias fzfvim="fzf | xargs --no-run-if-empty nvim"
+alias rmvn-test='rerun -xp "**/*.java" -x -- mvn clean test'
+alias fzfd='find . -type d -print | fzf --tiebreak=length'
+alias fzftmux='WORKSPACE_ROOT=$(fzfd); tmux new -s $(basename $WORKSPACE_ROOT) -c $WORKSPACE_ROOT'
+alias pwdmux='tmux new -s $(basename $(pwd))'
+alias mvn11='JAVA_HOME=/usr/lib/jvm/java-11-openjdk/ mvn'
+alias nmux='tmux new -s $1'
