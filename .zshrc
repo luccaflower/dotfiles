@@ -139,19 +139,17 @@ for f in ~/.zsh/include/*; do
     source $f;
 done
 
-QAICASH_SECRET_KEY=***REMOVED***
-QAICASH_SECRET_KEY_LIVE=***REMOVED***
-AW_WAR_DIR=/home/lucca/IdeaProjects/accountweb/target
 EDITOR=/sbin/nvim
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export JIRA_API_TOKEN=***REMOVED***
 export PATH="$PATH:/home/lucca/.local/share/coursier/bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.2.0/bin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 
+export FZF_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 source $HOME/.rvm/scripts/rvm
