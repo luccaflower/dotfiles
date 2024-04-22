@@ -149,6 +149,8 @@ export PATH="$PATH:$HOME/.local/share/gem/ruby/3.2.0/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
+export PAGER="nvim +Man!"
+
 export FZF_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
