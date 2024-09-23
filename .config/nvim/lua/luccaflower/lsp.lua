@@ -61,12 +61,10 @@ end
 local servers = {
   "dockerls",
   "rust_analyzer",
-  "texlab",
-  "solargraph",
   "bashls",
-  "tsserver",
   "eslint",
-  "clojure_lsp"
+  "clojure_lsp",
+  "clangd"
 }
 
 local cmp = require 'cmp'
