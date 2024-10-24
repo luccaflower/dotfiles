@@ -64,8 +64,10 @@ local servers = {
   "bashls",
   "eslint",
   "clojure_lsp",
-  "clangd"
+  "clangd",
+  "mesonlsp",
 }
+
 
 local cmp = require 'cmp'
 
@@ -89,11 +91,11 @@ end
 local luasnip = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()
 local kind_priority = {
-  Snippet = 9,
   Keyword = 8,
   Variable = 7,
   Function = 6,
   Method = 5,
+  Snippet = 4,
   Field = 4,
   Property = 4,
   Constant = 3,
@@ -117,12 +119,8 @@ local kind_priority = {
   Buffers = 0,
 }
 
+
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end
-  },
   formatting = {
     format = function(entry, vim_item)
       vim_item.menu = ({
