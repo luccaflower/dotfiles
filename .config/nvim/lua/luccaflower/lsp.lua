@@ -28,7 +28,7 @@ local lsp_keymaps = function(bufnr)
   buf_set_keymap('n', 'gR', '<cmd>lua vim.lsp.buf.references()<CR>',
     opts("Show references"))
   buf_set_keymap('n', 'ge',
-    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
+    '<cmd>lua vim.diagnostic.open_float()<CR>',
     opts("Show line diagnostics"))
   buf_set_keymap('n', 'g[d',
     '<cmd>lua vim.diagnostic.goto_prev()<CR>',
