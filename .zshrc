@@ -139,22 +139,19 @@ for f in ~/.zsh/include/*; do
     source $f;
 done
 
-EDITOR=/sbin/nvim
+export EDITOR=/sbin/nvim
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="$PATH:/home/lucca/.local/share/coursier/bin"
-export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
-export PATH="$PATH:$HOME/.local/share/gem/ruby/3.2.0/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.2.0/bin"
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.3.0/bin"
 
 export PAGER="nvim +Man!"
 
 export FZF_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND"
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-source $HOME/.rvm/scripts/rvm
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
